@@ -61,6 +61,6 @@ vue安装及使用：
 git使用：
     git init    
     git add .   
-    git commit -m '第一次提交'
+    git commit -m '日期'
     git remote add origin https://github.com/ckhsgdsg/study.git
-    git push -u origin main
+    git push -u origin main 
