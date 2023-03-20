@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+<body>
+    <ul id="list1">
+        <li>列表1</li>
+        <li>列表2</li>
+        <li>列表3</li>
+        <li>列表4</li>
+        <p>假列表</p>
+    </ul>
+    <script>
+        var list1=document.getElementById('list1');
+        list1.addEventListener('click',function(e){ //事件代理
+            if(e.target.tagName.toLowerCase() ==='li'){   //识别点击的元素的是否是对应的元素
+                console.log(e.target.innerHTML);    
+            }
+        })
+    </script>
+</body>
+</html>

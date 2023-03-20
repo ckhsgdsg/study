@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            height: 2000px;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        
+        window.onscroll=jieliu(function(){
+            console.log('鼠标滚动了');
+        },500);
+
+        // function yewu(){
+        //     console.log('鼠标滚动了');
+        // }
+        
+
+        function jieliu(yw,sj){
+            let timer=true;
+            return function(){
+                if(timer){
+                    setTimeout(() => {
+                        yw.call(this);
+                        timer=true;
+                    }, sj);
+                }
+                timer=false;
+            }
+        }
+    </script>
+</body>
+</html>

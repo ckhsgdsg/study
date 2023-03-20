@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div1{
+            width: 200px;
+            height: 200px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body>
+    <div id="div1"></div>
+
+    <script>
+        var name='ckh';
+        var name2={
+            name:'czq',
+            getname:function(){
+                var that=this;
+                setTimeout(function(){  //进入浏览器延迟2S后执行
+                    console.log(that.name); //this永远指向调用者。但是使用settimeout则会变成指向全局。
+                }, 2000);   
+            }
+        }
+        name2.getname();
+
+        var sto=setTimeout(function(){
+            console.log('延迟2S');
+        },2000)
+       
+        clearTimeout(sto);  //取消定时器
+
+        // var i=0;
+        // setInterval(function(){ //每1秒执行一次
+        //     i++;
+        //     console.log(i);
+        // },1000)
+
+
+        var div1=document.getElementById('div1');
+        var opacity=1;
+        var fader=setInterval(function(){
+            opacity-=0.05;
+            if(opacity>0){
+                div1.style.opacity=opacity;
+                console.log(opacity);
+            }else{
+                clearInterval(fader);
+            }
+        },100)
+    </script>
+</body>
+</html>

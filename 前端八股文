@@ -1,0 +1,14 @@
+1、CSS盒子模型：
+    每个HTML里的元素都可以看成一个盒子，由content、padding、margin、border组成
+    content-box和border-box区别主要为width不同，boder-box除了margin，其余都算在width之内，width=padding+border+content
+2、CSS优先级：
+    !important > 行内样式 > id > class/伪类/属性 > 标签选择器 > 全局选择器
+3、隐藏元素方法：
+    display:none
+        元素在页面上消失，不占据空间
+    opacity:0           
+        元素透明度为0，占据空间
+    visibility:hidden
+        元素在页面上消失，占据空间，只是一种不可见的状态
+4、px（像素）和rem（）区别
+    

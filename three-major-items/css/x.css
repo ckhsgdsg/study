@@ -1,0 +1,224 @@
+/* 字体属性 */
+#ziti1{
+    color: red;
+    font-size: 10px;
+    font-weight: bold;
+    font-style: italic;
+}
+#ziti2{
+    color: #ff0000;
+    font-weight:bolder;
+    font-style:normal;
+}
+#ziti3{
+    color: rgb(255, 0, 0);
+    font-weight: lighter;
+    font-family: "Simsun";
+}
+#ziti4{
+    color: rgba(0, 0, 0, .5);
+    font-weight:normal;
+}
+/* 背景属性 */
+.beijing{
+    width: 200px;
+    height: 200px;
+}
+#beijing1{
+    background-image: url("../imgs/gsgj.png");
+    background-repeat:no-repeat;
+    background-size: contain;
+}
+#beijing2{
+    background-color: yellow;
+}
+/* 文本属性 */
+h3{
+    text-align: left;
+}
+#wenben1{
+    text-decoration:overline;
+    text-transform: capitalize;
+    text-indent: 50px;
+}
+#wenben2{
+    text-decoration: line-through;
+    text-transform:uppercase;
+}
+#wenben3{
+    text-decoration:underline;
+    text-transform:lowercase;
+}
+/* 表格属性 */
+table,td{
+    border: 1px solid red;
+    text-align: right;
+    vertical-align:middle;
+    padding: 50px;
+    background-color: green;
+    color:purple ;
+}
+table{
+    border-collapse: collapse;
+}
+
+/* 关系选择器 */
+
+/* 后代选择器 （.ziti里头所有p元素）*/
+.ziti p{
+    color: green;
+}
+/* 子代选择器 （zitizidai里头除了被另外包装的所有p元素）*/
+.zitizidai>p{
+    color:purple;
+}
+/* 相邻兄弟选择器 （离ziti5最近的一个div）*/
+#ziti5+div{
+    text-align: center;
+}
+/* 通用兄弟选择器 （选择ziti6后面的所有.ziti）*/
+#ziti6~.ziti{
+    text-align: center;
+}
+
+/* 盒子模型 */
+#fudongbox{
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    float: right;
+}
+.box img{
+    width: 300px;
+    height: 200px;
+    padding: 100px 200px 300px 400px;
+    border: 5px solid red;
+    margin-left:400px;
+}
+/* 弹性盒子 */
+.tanxingbox{
+    width: 500px;
+    height: 500px;
+    background-color: orange;
+    display: flex;
+    flex-direction:column;
+    justify-content:center;
+    align-items:center;
+}
+#box1{
+    width: 100px;
+    height: 100px;
+    background-color: red;
+    flex:2;
+}
+#box2{
+    width: 100px;
+    height: 100px;
+    background-color: green;
+    flex:2;
+}
+#box3{
+    width: 100px;
+    height: 100px;
+    background-color: blue;
+    flex:1;
+}
+/* 定位 */
+.xiaotieshi{
+    position:fixed;
+    background-color: rebeccapurple;
+    width: 200px;
+    height: 200px;
+    right: 10px;
+    bottom: 10px;
+    z-index: 100;
+}
+/* CSS3特性 */
+
+/* 圆边 */
+.yuanbian{
+    width: 100px;
+    height: 100px;
+    background-color: blueviolet;
+    border-radius: 30px;
+}
+/* 阴影 */
+.yinying{
+    width: 500px;
+    height: 400px;
+    margin: 0 auto;
+    background-color: #2b92d4;
+    border-radius: 5px;
+    box-shadow: 0px 1px 2px rgba(0, 0, 0, .3);
+    animation: huxi 2700ms ease-in-out infinite alternate;
+    /* animation: name duration timing-function delay iteration-count direction fill-mode; 
+    name：动画名
+    durantion：持续时间
+    timing-function：速率
+        ease：逐渐变慢  linear：匀速    ease-in：加速   ease-out：加速  ease-in-out：先加后减
+    delay：开始时间
+    iteration-count：循环次数
+        infinite：无线循环
+    deirection：播放方向
+        normal：向前
+        alternate：偶数次向前，奇数次向反方向
+    fill-mode：填充模式
+    */
+}
+/* 呼吸动画 */
+@keyframes huxi {
+    0%{
+        opacity: 0.2;
+        box-shadow: 0 1px 2px rgba(255, 255, 255, .1);
+    }
+    50%{
+        opacity: 0.5;
+        box-shadow: 0 1px 2px rgba(18, 190, 84, .76);
+    }
+    100%{
+        opacity: 0.1;
+        box-shadow: 0 1px 2px rgba(255, 255, 255, 1);
+    }
+}
+/* 媒体查询 */
+.meitichaxun{
+    width: 100px;
+    height: 100px;
+}
+.meitichaxunziti{
+
+}
+@media screen and (max-width:768px){
+    .meitichaxun{
+        background-color: red;
+    }
+    .meitichaxunziti{
+        display: none;
+    }
+}
+@media screen and (max-width:996px) and (min-width:768px) {
+    .meitichaxun{
+        background-color: green;
+    }
+    .meitichaxunziti{
+        display: block;
+    }
+}
+@media screen and (min-width:996px){
+    .meitichaxun{
+        background-color: blue;
+    }
+    .meitichaxunziti{
+        display: block;
+    }
+}
+/* 雪碧图 */
+.xuebitu{
+    display: block;
+    width: 45px;
+    height: 70px;
+    background-image: url(../imgs/gsgj.png);
+    border: 1px solid red;
+    background-position: -20px -20px;
+}
+/* 字体图标 */

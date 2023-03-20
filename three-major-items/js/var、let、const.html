@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+
+
+    <script>
+        //var、let、const区别：
+        //1、var是在函数级的作用域，let、const为块级
+        //2、var会变量提升，let、const不行，所以会出现暂时性死区
+        //3、var可以重复声明
+        //4、const为常量，必须赋值并且无法直接改变值，需要间接改变
+
+
+
+        var a = [];
+        for (var i = 0; i < 10; i++) {
+            a[i]=function(){
+                console.log(i);
+            }
+        }
+        a[5](); //结果全是10
+
+        let b=1;
+        b=2;
+        console.log(b);
+        //var 的值i一直不变，只是一直在赋值，并且函数不是立即执行，每个函数里头保存的i都是指向一个i,这时候的i是10
+        //let 的值i是一直重新创建，每个函数里头保存的i都是一个个体i。
+    </script>
+
+</body>
+
+</html>

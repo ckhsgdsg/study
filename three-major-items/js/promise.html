@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="box1">等待加载</div>
+
+    <script>
+        var box1 = document.getElementById('box1');
+
+        function _promise(url) {
+            const promise = new Promise(function (resolve, reject) {
+                //异步处理：消耗时间的代码
+                const image = new Image(); //创建image对象
+                image.src = url;
+                image.onload = function () {
+                    resolve(image);
+                }
+                image.onerror = function () {
+                    reject(new Error('无法加载' + url));
+                }
+            });
+            return promise;
+        }
+        const promise = _promise("http://iwenwiki.com/api/musicimg/2.png");
+        promise.then(function (data) {
+            box1.appendChild(data);
+        }, function (error) {
+            box1.innerHTML = "加载失败";
+            console.log(error);
+        })
+
+
+
+        const getJson = function (url) {
+            const promise = new Promise(function (resolve, reject) {
+                //异步操作
+                const yewu=function(){
+                    //readystate：存储XMLHttpRequest的状态
+                    //  0：请求未初始化（还没有调用 open()）
+                    //  1：服务器连接已建立：但是还没有发送（还没有调用 send()）。
+                    //  2：请求已接收：请求已发送，正在处理中（通常现在可以从响应中获取内容头）。
+                    //  3：请求处理中：通常响应中已有部分数据可用了，但是服务器还没有完成响应的生成。
+                    //  4：请求已完成，且响应已就绪：您可以获取并使用服务器的响应了。
+                    if(this.readyState!==4){    
+                        return;
+                    }
+                    //status：返回的状态值。
+                    //  200："ok"
+                    //  403：权限不足
+                    //  404：未找到页面
+                    //  500：后端服务问题
+                    if(this.status===200){
+                        resolve(this.response);
+                    }else{
+                        reject(new Error(this.statusText));
+                    }
+                }
+                //创建xhr对象
+                const xhr = new XMLHttpRequest();
+                //创建ajax请求
+                xhr.open('get',url);
+
+                xhr.onreadystatechange=yewu;        //onreadystatechange：存储函数，每当readystate发生改变时，触发该函数
+                xhr.responseType='json';
+                xhr.setRequestHeader('Accept','application/json');
+                xhr.send();
+            })
+            return promise;
+        }
+
+        getJson("http://iwenwiki.com/api/blueberrypai/getChengpinDetails.php")
+        .then(function(data){
+             console.log(data);
+        },function(error){
+            console.log(error);
+        })
+    </script>
+</body>
+
+</html>

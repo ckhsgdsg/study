@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+    </style>
+</head>
+
+<body>
+    <input id="sousuokuang" type="text" placeholder="搜索">
+    <script>
+
+        var sousuokuang = document.getElementById('sousuokuang');
+        sousuokuang.oninput = fangdou(function(){
+            console.log(this.value);
+        },300);
+
+        // function yewu(){
+        //     var sousuokuang = document.getElementById('sousuokuang');
+        //     console.log(sousuokuang.value);
+        // }
+
+        function fangdou(yw, sj) {
+            let timer = null;
+
+            return function(){
+                if (timer){
+                    clearTimeout(timer);
+                }
+                timer=setTimeout(() => {
+                    yw.call(this); 
+                }, sj);
+            }
+            
+        }
+
+
+
+
+
+
+
+        // function showTop(){
+        //     var scrollTop=document.documentElement.scrollTop;
+        //     console.log('滚动条位置：'+scrollTop);
+        // }
+        // function debounce(fn,delay){
+        //     let timer=null;
+        //     return function(){
+        //         // if (timer){
+        //         //     clearTimeout(timer);
+        //         // }
+        //         timer=setTimeout(fn,delay)
+        //     }
+        // }
+
+        // window.onscroll=debounce(showTop,200);  //200ms内只执行一次
+    </script>
+</body>
+
+</html>

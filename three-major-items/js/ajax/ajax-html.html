@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <button id="btn1">按钮</button>
+    <div id="div1"></div>
+
+    <script>
+        var btn1 = document.getElementById('btn1');
+        var div1=document.getElementById('div1');
+        btn1.onclick = function () {
+            //创建xhr对象
+            var xhr = new XMLHttpRequest();
+            //创建ajax请求
+            xhr.open('get','http://iwenwiki.com/api/blueberrypai/getChengpinDetails.php',true);
+            //发送ajax请求
+            xhr.send(); 
+            //服务器响应的时候，接收返回的数据
+            xhr.onreadystatechange=function(){
+                if(xhr.readyState===4){
+                    //判断http状态码
+                    if(xhr.status===200){
+                        document.write(xhr.responseText);
+                    }
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

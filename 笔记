@@ -1,0 +1,66 @@
+操作快捷键:
+    Shift+Alt+F:            代码格式化
+    Alt+↑/↓:               该行内容向上/下移动一行
+    Shift+Alt+↑/↓:         快速复制代码
+    Shift+H:                快速替换
+    Shift+Alt+B:            快速打开网页
+    Ctrl+/:                 注释
+
+快速生成代码:
+    h$*6:                   快速生成标题1~标题6
+    ul>li*3:                快速生成有三个子菜单的列表
+    table>tr*2>td*3{单元格}: 快速生成2行3列内容都为“单元格”的表格
+
+调试:
+    debugger
+        F8:运行到结束
+        F10:运行下一步(跳过函数内部过程)
+        F11:运行下一步(进入执行函数步骤)
+
+浏览器兼容问题:
+    1、不同浏览器标签默认内外边距不同
+    答:*{padding:0 margin:0}或者引用他人写好的CSS样式
+    2、IE9,图片加a标签会有边框
+    答:img{border:none}
+    3、IE6及以下版本浮动元素浮动双倍边距
+    答:使用padding,不使用margin
+    4、IE6及以下版本部分块元素有默认高度
+    答:font-size:0
+    5、a标签蓝色边框
+    答:a{outline:none}
+    6、IE6不支持min-height属性
+
+NODEJS环境安装:
+    环境变量→系统变量(添加)→NODE_HOME,安装路径→进入Path(添加)→%NODE_HOME%,%NODE_HOME%\node_cache,%NODE_HOME%\node_global→打开npmmirror.com配置镜像
+    报错：进入c:\users\xxx\找到.npmrc文件并删除→npm cache clean --force→重新配置镜像
+
+babel转码安装及使用:
+安装:
+    cnpm install --save-dev @bable/core         --安装babel
+    cnpm install --save-dev @bable/preset-env   --安装转码规则
+    新建.babelrc或babel.config.js文件,配置{"presets": ["@babel/env"],"plugins": []}
+    cnpm install --save-dev @bable/cli          --安装babel命令行工具
+    cnpm install -g babel-cli           --全局安装babel-cli
+    cnpm install -D babel-preset-env    
+使用(vscode内使用):
+    npx babel xxx.js                --转码结果输出到标准输出
+    npx babel xxx.js -o xxx-new.js  --转码结果输出到指定文件
+    npx babel xxx -d xxx            --整个目录转码结果输出到指定目录
+    babel-node --presets env xxx.js --module文件
+
+vue安装及使用：
+    cnpm install -g @vue/cli        --全局安装vue工具
+    cnpm install --save swiper      --安装swiper插件
+    cnpm install --save axios       --安装axios网络请求库(类似ajax)
+    cnpm install --save querystring --安装post请求参数插件
+    cnpm install --save vue-router  --安装router路由
+    cnpm install --save vuex        --安装vue状态管理插件
+    cnpm install --save element-plus        --安装element-plus组件库
+    cnpm install -D unplugin-vue-components unplugin-auto-import    --按需导入库
+    cnpm install @element-plus/icons-vue    --安装element-plus字体库
+git使用：
+    git init    
+    git add .   
+    git commit -m '第一次提交'
+    git remote add origin https://github.com/ckhsgdsg/study.git
+    git push -u origin main

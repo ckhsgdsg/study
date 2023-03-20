@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #div2{
+            width: 200px;
+            height: 200px;
+            background-color: red;
+        }
+        #div3{
+            width: 100px;
+            height: 100px;
+            background-color: green;
+        }
+    </style>
+</head>
+<body id="body1">
+    <button id="btn1" onclick="_chufa1()">触发</button>
+    <button id="btn2">触发</button>
+    <button id="btn3">触发</button>
+    <button id="sbsj1">鼠标事件1</button>
+    <div id="div1"></div>
+
+    <p>-----------------------------------------------------------------------</p>
+
+    <button id="btn4">EVENT事件</button>
+    <a id="a1" href="https://www.baidu.com">百度</a>
+    <div id="div2">
+        <div id="div3"></div>
+    </div>
+
+    <p>-----------------------------------------------------------------------</p>
+
+    <input id="input1" type="text" placeholder="输入内容">
+    <input id="input2" type="password" placeholder="密码">
+
+    <p>-----------------------------------------------------------------------</p>
+    <input id="input3" type="text" >
+    <input id="input4" type="text" >
+
+    <form id="form1" action="服务器地址" onsubmit="SubmitHandle">
+        <input id="input5" type="text" name="username">
+        <button id="btn5">重置</button>
+        <button>提交</button>
+    </form>
+
+    <script>    
+        //HTML事件：缺点为无法和HTML分开,不推荐使用
+        function _chufa1(){ 
+            console.log("111");
+        }
+
+        //dom0事件，缺点为无法添加多个事件，多个事件会被覆盖
+        var btn2=document.getElementById('btn2');
+        btn2.onclick=function(){
+            console.log("222");
+        }   
+        btn2.onclick=function(){
+            console.log("222啊");
+        }   
+
+        //dom2事件
+        var btn3=document.getElementById('btn3');
+        btn3.addEventListener("click",function(){
+            console.log('333');
+        })
+        btn3.addEventListener("click",function(){
+            console.log('333啊');
+        })
+        
+        //鼠标事件
+        //  click：按下鼠标时触发
+        //  dblclick：在同一个元素上双击鼠标触发
+        //  mousedown：按下鼠标键时触发
+        //  mouseup：释放按下鼠标键时触发
+        //  mousemove：当鼠标在节点内部移动时触发。当鼠标持续移动时，连续触发
+        //  mouseenter：当鼠标进入一个节点时触发，进入子节点不会触发这个事件
+        //  mouseleave：当鼠标离开一个节点时触发，离开父节点不会触发这个事件
+        //  mouseover：当鼠标进入一个节点时触发，进入子节点会再次触发
+        //  mouseout：当鼠标离开一个节点时触发，离开父节点也会触发这个事件
+        //  wheel：鼠标在元素中滚动鼠标的滚轮时触发
+
+        var sbsj1 =document.getElementById('sbsj1');
+        // sbsj1.addEventListener('mouseout',function(){
+        //     console.log('鼠标事件1');
+        // })
+        
+        var div1=document.getElementById('div1');
+        div1.style.width="200px";
+        div1.style.height="200px";
+        div1.style.background="green";
+        // div1.addEventListener('mouseover',function(){
+        //     console.log('鼠标事件2');
+        // })
+
+        var newDiv=document.createElement('div');
+        var it=document.createAttribute('style');
+        it.value="width:50px;height:50px;background:red;";
+        newDiv.setAttributeNode(it);
+        div1.appendChild(newDiv);
+        div1.addEventListener('mouseout',function(){
+            console.log('鼠标事件3');
+        })
+        
+        //EVENT事件
+        var btn4=document.getElementById('btn4');
+        btn4.onclick=function(e){   
+            console.log(this ===e.target)   //
+            e.target.innerHTML='触发了';
+            console.log(e.type);
+        }
+        var a1=document.getElementById('a1');
+        a1.onclick=function(e){
+            event.preventDefault();     //取消浏览器对当前事件的默认行为
+        }
+        var div2=document.getElementById('div2');
+        var div3=document.getElementById('div3');
+        div2.onclick=function(){
+            console.log('div2');
+        }
+        div3.onclick=function(e){
+            event.stopPropagation();    //只监听当前操作，防止触发定义在别的节点上的函数
+            console.log('div3');
+        }
+
+        //键盘事件
+        var input1=document.getElementById('input1');
+        input1.onkeydown=function(){
+            console.log('按下键盘了');
+        }
+        input1.onkeyup=function(e){
+            console.log(e.target.value);
+            console.log('抬起键盘了');
+        }
+        input1.onkeypress=function(e){  //如按ctrl、alt、shift、meta按键则无法触发
+            console.log(e.target.value);
+            console.log('也按下键盘了');
+        }
+        var input2=document.getElementById('input2');
+        input2.onkeyup=function(e){
+            if(e.keyCode==13){  //对应ascii码表
+                console.log('你按回车干锤子');
+            }
+        }
+
+        //表单事件
+        var input3=document.getElementById('input3');
+        input3.oninput=function(e){ //oninput实时读取内容
+            console.log(e.target.value)
+        }
+
+        input3.onselect=function(e){ //鼠标拉取选中
+            console.log(e.target.value);
+        }
+
+        var input4=document.getElementById('input4');
+        input4.onchange=function(e){    //失去光标后读取内容
+            console.log(e.target.value);
+        }
+
+        var input5=document.getElementById('input5');
+        var btn5=document.getElementById('btn5');
+        var form1=document.getElementById('form1');
+        btn5.onclick=function(){
+            form1.reset();
+        }
+        function SubmitHandle(){
+            console.log("提交");
+        }
+
+    </script>
+</body>
+</html>

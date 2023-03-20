@@ -1,0 +1,23 @@
+{
+  "id": "",
+  "name": "",
+  "font_family": "iconfont",
+  "css_prefix_text": "icon-",
+  "description": "",
+  "glyphs": [
+    {
+      "icon_id": "774481",
+      "name": "家",
+      "font_class": "jia",
+      "unicode": "e681",
+      "unicode_decimal": 59009
+    },
+    {
+      "icon_id": "1092145",
+      "name": "家",
+      "font_class": "jia1",
+      "unicode": "e630",
+      "unicode_decimal": 58928
+    }
+  ]
+}
